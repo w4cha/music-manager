@@ -1,0 +1,8 @@
+#cache file
+__pycache__/
+#db
+*.db
+#csv
+*.csv
+#log folder
+log/
