@@ -352,7 +352,7 @@ if __name__ == "__main__":
                     print(f"trying to update unsupported db file type: {file_ext}")
             else:
                 if str(working_dir).lower() == "dlt":
-                    entry_to_mark = input("Entry number or artist to delete: ").strip()
+                    entry_to_mark = input("Entry number or artist to delete: ").strip().lower()
                     if entry_to_mark.isnumeric() and 0 < int(entry_to_mark) <= get_total():
                         # first we attempt to log the entry before we mark it as deleted
                         logged = write_log(int(entry_to_mark))
@@ -374,7 +374,7 @@ if __name__ == "__main__":
                                 last_item.append(result)
                         if last_item and len(last_item[0]):
                             confirm_deletion = input(f"confirm the deletion of the results of the search? (yes to confirm): ").strip().lower()
-                            if confirm_deletion[0] == "yes":
+                            if confirm_deletion == "yes":
                                 places: dict[int, str] = {0: "start", len(last_item[0])-1: "end"}
                                 for item in range(len(last_item[0])):
                                     
