@@ -314,6 +314,7 @@ if __name__ == "__main__":
     marked_as_d: dict = {"title": "removed_entry_free_space", "genre": "deleted_song"}
     working_dict: str = str(fr"{Path(__file__).parent}\music.db")
     txt_log: str = str(fr"{Path(__file__).parent}\log\Log.txt")
+    current_check_info: str = str(fr"{Path(__file__).parent}\log\current_check.txt")
     try:
         while True:
             if new_dict:
@@ -409,8 +410,10 @@ if __name__ == "__main__":
                 proceed: str = input("\nProceed to db check despite the matches? (y or n): ").lower().strip()
                 if proceed[0] == "n":
                     continue
-            for db_match in check_if_similar():
-                print(db_match)
+            with open(current_check_info, "w", encoding="utf-8") as log_checks:
+                for db_match in check_if_similar():
+                    log_checks.write(db_match)
+                    print(db_match)
             ask_update = input("Update to db (yes to confirm): ").lower().strip()
             if ask_update == "yes":
                 ask_start_point = input("Rewrite entries from: (number to start or "
