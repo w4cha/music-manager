@@ -9,6 +9,8 @@ from typing import Generator
 # creating new entries
 # C:\Users\Lucas Folch\Desktop\txt\path_final.txt
 # C:\Users\Lucas Folch\Desktop\temporary
+# IMPORTANT THE METADATA LIBRARY USED TO READ MIGHT GIVE DIFFERENT RESULTS THAN EXTERNAL
+# TAG EDITING SOFTWARE
 import sys
 import time
 import re
@@ -44,7 +46,7 @@ CREATE TABLE [music data] (
 # read paths form txt file and parsed them
 # to remove the trailing "" or '' when copied from explorer
 def check_copy_path(path_str: str) -> str:
-    if platform.system() == "Windows" and re.match(r'^"[cCeE]:(?:(?:\\|\\\\)[^?/*<>|:\\"]+)+"$',
+    if platform.system() == "Windows" and re.match(r'^"[cCeEDd]:(?:(?:\\|\\\\)[^?/*<>|:\\"]+)+"$',
                                                    path_str) is not None:
         return path_str[1:-1]
     return path_str

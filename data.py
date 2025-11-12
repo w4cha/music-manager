@@ -68,7 +68,7 @@ class Database:
                                     "dict like {query: str, args: tuple}, "
                                     f"got {sql_query} instead.")
 
-    def cvs_(self, read_val: str, output: str, delimiter: str = ",") -> None:
+    def csv_(self, read_val: str | tuple | list | dict, output: str, delimiter: str = ",") -> None:
         try:
             con_obj = self.connection.cursor()
             con_obj.execute(*self.check_query(read_val))
